@@ -7,16 +7,16 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class ViewController: UIViewController, NextViewControllerDelegate {
     private var timer: Timer?
     private var favoriteButtons: [buttonWithParameters] = []
     
     private let screenSize: CGRect = UIScreen.main.bounds
     private lazy var titleTopOffset: CGFloat = screenSize.height * 0.045
-    private let cardWidthCoeff: Double = 0.9
-    private let cardHeightCoeff: Double = 0.25
-    private lazy var cardButtonWidthCoeff: Double = cardWidthCoeff * 0.3 // 0.3 // 0.288
-    private lazy var cardButtonHeightCoeff: Double = cardHeightCoeff * 1.05 // 1.05 // 0.265
+    private let cardWidthCoeff: Double = 0.9 // 0.9
+    private let cardHeightCoeff: Double = 0.25 // 0.25
+    private lazy var cardButtonWidthCoeff: Double = cardWidthCoeff * 0.32 // 0.3
+    private lazy var cardButtonHeightCoeff: Double = cardHeightCoeff * 1.06 // 1.05
     
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -35,6 +35,7 @@ final class ViewController: UIViewController {
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         view.text = "Пока здесь ничего нет"
+        
         return view
     }()
     private let button: UIButton = {
@@ -121,9 +122,7 @@ final class ViewController: UIViewController {
         view.setTitle("", for: .normal)
         view.setImage(image, for: .normal)
         view.tintColor = .black
-        view.frame.size = CGSize(width: UIScreen.main.bounds.size.width*0.9*0.3, height: UIScreen.main.bounds.size.height*0.25*1.05)
-
-//        view.frame.size = CGSize(width: screenSize.width * cardButtonWidthCoeff, height: screenSize.height * cardButtonHeightCoeff)
+        view.frame.size = CGSize(width: screenSize.width * cardButtonWidthCoeff, height: screenSize.height * cardButtonHeightCoeff)
         view.backgroundColor = UIColor(red: 241/255, green: 238/255, blue: 228/255, alpha: 1)
         view.layer.cornerRadius = cornerRadius
         view.addGradientCornerBorders(lineWidth: 10, cornerRadius: cornerRadius, colors: [UIColor.blue.cgColor, UIColor.green.cgColor], startPoint: CGPoint.topRight, endPoint: CGPoint.bottomLeft)
@@ -249,9 +248,22 @@ final class ViewController: UIViewController {
         
         return view
     }()
+    private let mainCardFromLabelView: LabelWithParameters = {
+        let view = LabelWithParameters(field: "From", text: "Откуда", placeholderForSearchBar: "Откуда")
+        
+        return view
+    }()
     
     deinit {
         timer?.invalidate()
+    }
+    
+    func callback(_ cab: String, with field: String) {
+        if field == "From" {
+            self.mainCardFromLabelView.text = cab
+            self.mainCardFromLabelView.textColor = .black
+        }
+//        print("\(field) -> \(cab)")
     }
     
     override func viewDidLoad() {
@@ -314,6 +326,7 @@ final class ViewController: UIViewController {
         favoritesTitleStackView.addArrangedSubview(favoritesLabelView)
         headerView.addSubview(headerLabelView)
         mainCardView.addSubview(mainSearchButtonView)
+        mainCardView.addSubview(mainCardFromLabelView)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -366,7 +379,11 @@ final class ViewController: UIViewController {
             mainSearchButtonView.centerYAnchor.constraint(equalTo: mainCardView.centerYAnchor),
             mainSearchButtonView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: cardButtonWidthCoeff),
             mainSearchButtonView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: cardButtonHeightCoeff),
-            mainSearchButtonView.rightAnchor.constraint(equalTo: mainCardView.rightAnchor, constant: 10)
+            mainSearchButtonView.rightAnchor.constraint(equalTo: mainCardView.rightAnchor, constant: 10),
+            
+            mainCardFromLabelView.topAnchor.constraint(equalTo: mainCardView.topAnchor, constant: 10),
+            mainCardFromLabelView.leftAnchor.constraint(equalTo: mainCardView.leftAnchor, constant: 10),
+            mainCardFromLabelView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: cardWidthCoeff - cardButtonWidthCoeff)
         ])
         
         if favoriteButtons.count != 0 {
@@ -397,8 +414,8 @@ final class ViewController: UIViewController {
         }
         
 //        mainSearchButtonView.addTarget(self, action: #selector(goToShowRouteViewController), for: .touchUpInside)
-        mainSearchButtonView.addTarget(self, action: #selector(goToSearchCabinetViewController), for: .touchUpInside)
-        
+//        mainSearchButtonView.addTarget(self, action: #selector(goToSearchCabinetViewController), for: .touchUpInside)
+        mainCardFromLabelView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToSearchCabinetViewController(_:))))
     }
     
     private func setTimer(with interval: Double) {
@@ -440,12 +457,16 @@ final class ViewController: UIViewController {
 //        navigationController?.isNavigationBarHidden = false
     }
     
-    @objc private func goToSearchCabinetViewController() {
+    @objc private func goToSearchCabinetViewController(_ sender: UITapGestureRecognizer) {
+        let senderView = sender.view as? LabelWithParameters
         let rootVC = SearchingCabinetViewController()
+        rootVC.delegate = self
+        rootVC.field = senderView?.field
+        rootVC.placeholder = senderView?.placeholderForSearchBar
+        
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.overrideUserInterfaceStyle = .light
         present(navVC, animated: true)
-//        navigationController?.pushViewController(SearchingCabinetViewController(), animated: true)
     }
 }
 

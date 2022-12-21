@@ -15,6 +15,7 @@
 		9393A9402950EC3D00C70078 /* ShowRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A93F2950EC3D00C70078 /* ShowRouteViewController.swift */; };
 		9393A9422950FF1200C70078 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A9412950FF1200C70078 /* Graph.swift */; };
 		9393A9442952563C00C70078 /* SearchingCabinetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A9432952563C00C70078 /* SearchingCabinetViewController.swift */; };
+		9393A9462953C4AF00C70078 /* LabelWithParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A9452953C4AF00C70078 /* LabelWithParameters.swift */; };
 		93DAA5CC29477561002411DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DAA5CB29477561002411DA /* AppDelegate.swift */; };
 		93DAA5CE29477561002411DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DAA5CD29477561002411DA /* SceneDelegate.swift */; };
 		93DAA5D029477561002411DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DAA5CF29477561002411DA /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		9393A93F2950EC3D00C70078 /* ShowRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRouteViewController.swift; sourceTree = "<group>"; };
 		9393A9412950FF1200C70078 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		9393A9432952563C00C70078 /* SearchingCabinetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingCabinetViewController.swift; sourceTree = "<group>"; };
+		9393A9452953C4AF00C70078 /* LabelWithParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithParameters.swift; sourceTree = "<group>"; };
 		93DAA5C829477561002411DA /* Game2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93DAA5CB29477561002411DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93DAA5CD29477561002411DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				9393A9432952563C00C70078 /* SearchingCabinetViewController.swift */,
 				9393A9412950FF1200C70078 /* Graph.swift */,
 				9393A93D294FD6F900C70078 /* ButtonWithParameters.swift */,
+				9393A9452953C4AF00C70078 /* LabelWithParameters.swift */,
 				93FD5940294B91BE00CA188D /* TestViewController.swift */,
 				9393A925294FCCDF00C70078 /* NewTestViewController.swift */,
 				9393A93B294FD25700C70078 /* ResizeViewController.swift */,
@@ -249,6 +252,7 @@
 			files = (
 				9393A9442952563C00C70078 /* SearchingCabinetViewController.swift in Sources */,
 				93DAA5D029477561002411DA /* ViewController.swift in Sources */,
+				9393A9462953C4AF00C70078 /* LabelWithParameters.swift in Sources */,
 				9393A93E294FD6F900C70078 /* ButtonWithParameters.swift in Sources */,
 				93DAA5CC29477561002411DA /* AppDelegate.swift in Sources */,
 				9393A93C294FD25700C70078 /* ResizeViewController.swift in Sources */,
