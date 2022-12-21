@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		5543B73708423B84E3E9C427 /* Pods_Game2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AD307FDA201125AB036AB3 /* Pods_Game2.framework */; };
 		9376E28F2947ACD8003DA46B /* magn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9376E28E2947ACD8003DA46B /* magn.png */; };
+		9393A926294FCCDF00C70078 /* NewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A925294FCCDF00C70078 /* NewTestViewController.swift */; };
+		9393A93C294FD25700C70078 /* ResizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A93B294FD25700C70078 /* ResizeViewController.swift */; };
+		9393A93E294FD6F900C70078 /* ButtonWithParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A93D294FD6F900C70078 /* ButtonWithParameters.swift */; };
+		9393A9402950EC3D00C70078 /* ShowRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A93F2950EC3D00C70078 /* ShowRouteViewController.swift */; };
+		9393A9422950FF1200C70078 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A9412950FF1200C70078 /* Graph.swift */; };
+		9393A9442952563C00C70078 /* SearchingCabinetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393A9432952563C00C70078 /* SearchingCabinetViewController.swift */; };
 		93DAA5CC29477561002411DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DAA5CB29477561002411DA /* AppDelegate.swift */; };
 		93DAA5CE29477561002411DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DAA5CD29477561002411DA /* SceneDelegate.swift */; };
 		93DAA5D029477561002411DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DAA5CF29477561002411DA /* ViewController.swift */; };
@@ -22,6 +28,12 @@
 		05CBE0FD34D9FBC68BE932E6 /* Pods-Game2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game2.debug.xcconfig"; path = "Target Support Files/Pods-Game2/Pods-Game2.debug.xcconfig"; sourceTree = "<group>"; };
 		20FCB277CACC21F20249187E /* Pods-Game2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game2.release.xcconfig"; path = "Target Support Files/Pods-Game2/Pods-Game2.release.xcconfig"; sourceTree = "<group>"; };
 		9376E28E2947ACD8003DA46B /* magn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magn.png; sourceTree = "<group>"; };
+		9393A925294FCCDF00C70078 /* NewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestViewController.swift; sourceTree = "<group>"; };
+		9393A93B294FD25700C70078 /* ResizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeViewController.swift; sourceTree = "<group>"; };
+		9393A93D294FD6F900C70078 /* ButtonWithParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithParameters.swift; sourceTree = "<group>"; };
+		9393A93F2950EC3D00C70078 /* ShowRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRouteViewController.swift; sourceTree = "<group>"; };
+		9393A9412950FF1200C70078 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		9393A9432952563C00C70078 /* SearchingCabinetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingCabinetViewController.swift; sourceTree = "<group>"; };
 		93DAA5C829477561002411DA /* Game2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93DAA5CB29477561002411DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93DAA5CD29477561002411DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +109,13 @@
 			children = (
 				9376E2902948AE18003DA46B /* Application */,
 				93DAA5CF29477561002411DA /* ViewController.swift */,
+				9393A93F2950EC3D00C70078 /* ShowRouteViewController.swift */,
+				9393A9432952563C00C70078 /* SearchingCabinetViewController.swift */,
+				9393A9412950FF1200C70078 /* Graph.swift */,
+				9393A93D294FD6F900C70078 /* ButtonWithParameters.swift */,
 				93FD5940294B91BE00CA188D /* TestViewController.swift */,
+				9393A925294FCCDF00C70078 /* NewTestViewController.swift */,
+				9393A93B294FD25700C70078 /* ResizeViewController.swift */,
 				9376E2912948AE53003DA46B /* SupportingFiles */,
 				9376E28E2947ACD8003DA46B /* magn.png */,
 				93DAA5DF29478827002411DA /* logo.jpg */,
@@ -229,10 +247,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9393A9442952563C00C70078 /* SearchingCabinetViewController.swift in Sources */,
 				93DAA5D029477561002411DA /* ViewController.swift in Sources */,
+				9393A93E294FD6F900C70078 /* ButtonWithParameters.swift in Sources */,
 				93DAA5CC29477561002411DA /* AppDelegate.swift in Sources */,
+				9393A93C294FD25700C70078 /* ResizeViewController.swift in Sources */,
 				93FD5941294B91BE00CA188D /* TestViewController.swift in Sources */,
+				9393A926294FCCDF00C70078 /* NewTestViewController.swift in Sources */,
+				9393A9422950FF1200C70078 /* Graph.swift in Sources */,
 				93DAA5CE29477561002411DA /* SceneDelegate.swift in Sources */,
+				9393A9402950EC3D00C70078 /* ShowRouteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

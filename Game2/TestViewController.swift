@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TestViewController: UIViewController {
+final class TestViewController: UIViewController {
     private let testView: UIView = {
         let view = UIView()
         
@@ -50,12 +50,12 @@ class TestViewController: UIViewController {
 //        ])
         
         
-        let lineWidth: CGFloat = 30
-        let cornerRadius: Double = 15.0
+        let lineWidth: CGFloat = 8
+        let cornerRadius: Double = 25.0
         
         let button = UIButton()
         
-        button.frame.size = CGSize(width: 300, height: 300)
+        button.frame.size = CGSize(width: UIScreen.main.bounds.size.width*0.9*0.3, height: UIScreen.main.bounds.size.height*0.25*1.05)
         button.backgroundColor = .red
         button.layer.cornerRadius = cornerRadius
         button.translatesAutoresizingMaskIntoConstraints = false

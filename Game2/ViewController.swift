@@ -7,21 +7,23 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIScrollViewDelegate {
+final class ViewController: UIViewController {
     private var timer: Timer?
+    private var favoriteButtons: [buttonWithParameters] = []
     
     private let screenSize: CGRect = UIScreen.main.bounds
-    private lazy var titleTopOffset: CGFloat = screenSize.height * 0.025
+    private lazy var titleTopOffset: CGFloat = screenSize.height * 0.045
     private let cardWidthCoeff: Double = 0.9
     private let cardHeightCoeff: Double = 0.25
-    private lazy var cardButtonWidthCoeff: Double = cardWidthCoeff * 0.3
-    private lazy var cardButtonHeightCoeff: Double = cardHeightCoeff * 1.05
+    private lazy var cardButtonWidthCoeff: Double = cardWidthCoeff * 0.3 // 0.3 // 0.288
+    private lazy var cardButtonHeightCoeff: Double = cardHeightCoeff * 1.05 // 1.05 // 0.265
     
-    private let scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
         view.showsVerticalScrollIndicator = false
+        view.contentInsetAdjustmentBehavior = .never
         
         return view
     }()
@@ -31,8 +33,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 0
         view.textAlignment = .center
-        view.text = "e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw ke;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw ke;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv wefvnewfovw k e;fkvekvne;k vnekvnefeve e eerervgerve  ergevevevefvefekvne;kvnev wefkvjnwe;vjnwer e;vkonweovknwfo;knv ;wefknvwoknvweokvn ;wefkvwoeknvewokfnv weknvewknvew;knv"
-        
+        view.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        view.text = "Пока здесь ничего нет"
         return view
     }()
     private let button: UIButton = {
@@ -119,10 +121,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         view.setTitle("", for: .normal)
         view.setImage(image, for: .normal)
         view.tintColor = .black
-        view.frame.size = CGSize(width: screenSize.width * cardButtonWidthCoeff, height: screenSize.height * cardButtonHeightCoeff)
+        view.frame.size = CGSize(width: UIScreen.main.bounds.size.width*0.9*0.3, height: UIScreen.main.bounds.size.height*0.25*1.05)
+
+//        view.frame.size = CGSize(width: screenSize.width * cardButtonWidthCoeff, height: screenSize.height * cardButtonHeightCoeff)
         view.backgroundColor = UIColor(red: 241/255, green: 238/255, blue: 228/255, alpha: 1)
         view.layer.cornerRadius = cornerRadius
-        view.addGradientCornerBorders(lineWidth: 8, cornerRadius: cornerRadius, colors: [UIColor.blue.cgColor, UIColor.green.cgColor], startPoint: CGPoint.topRight, endPoint: CGPoint.bottomLeft)
+        view.addGradientCornerBorders(lineWidth: 10, cornerRadius: cornerRadius, colors: [UIColor.blue.cgColor, UIColor.green.cgColor], startPoint: CGPoint.topRight, endPoint: CGPoint.bottomLeft)
         
         return view
     }()
@@ -252,14 +256,34 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUsersData()
         initialize()
         setTimer(with: 0.01)
         scrollView.updateVerticalContentView()
         quickSearchScrollView.updateHorizontalContentView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func getUsersData() {
+        let selectedMaps: [String] = UserDefaults.standard.array(forKey: "selectedMaps") as? [String] ?? [String]()
+//        {
+//            didSet {
+//                UserDefaults.standard.set(selectedMaps, forKey: "selectedMaps")
+//            }
+//        }
+        
+        if selectedMaps.count != 0 {
+            for x in selectedMaps.indices {
+                self.favoriteButtons.append(buttonWithParameters(type: .system, name: selectedMaps[x]))
+                self.favoriteButtons[x].addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            }
+        }
+    }
+    
     private func initialize() {
-        overrideUserInterfaceStyle = .light
         view.backgroundColor = UIColor(red: 241/255, green: 238/255, blue: 228/255, alpha: 1)
         
         view.addSubview(scrollView)
@@ -269,8 +293,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(quickSearchTitleStackView)
         scrollView.addSubview(quickSearchScrollView)
         scrollView.addSubview(favoritesTitleStackView)
-        scrollView.addSubview(label)
-        scrollView.addSubview(button)
+        
+        if favoriteButtons.count != 0 {
+            for x in favoriteButtons.indices {
+                scrollView.addSubview(favoriteButtons[x])
+            }
+        } else {
+            scrollView.addSubview(label)
+        }
+
         titleStackView.addArrangedSubview(mainIconView)
         titleStackView.addArrangedSubview(mainLabelView)
         quickSearchScrollView.addSubview(quickSearchContentView)
@@ -294,7 +325,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             titleStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
             mainCardView.topAnchor.constraint(greaterThanOrEqualTo: titleStackView.bottomAnchor, constant: screenSize.height * 0.05),
-//            mainCardView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: screenSize.height * 0.05),
             mainCardView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             mainCardView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: cardWidthCoeff),
             mainCardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: cardHeightCoeff),
@@ -307,33 +337,23 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             quickSearchScrollView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
             quickSearchScrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
             quickSearchScrollView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: cardHeightCoeff + 0.05),
-            
+
             quickSearchContentView.leftAnchor.constraint(equalTo: quickSearchScrollView.leftAnchor, constant: 15),
             quickSearchContentView.rightAnchor.constraint(equalTo: quickSearchScrollView.rightAnchor, constant: -15),
             quickSearchContentView.heightAnchor.constraint(equalTo: quickSearchScrollView.heightAnchor),
             quickSearchContentView.centerYAnchor.constraint(equalTo: quickSearchScrollView.centerYAnchor),
-            
+
             test1.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: cardWidthCoeff),
             test1.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: cardHeightCoeff),
-            
+
             test2.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: cardWidthCoeff),
             test2.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: cardHeightCoeff),
-            
+
             test3.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: cardWidthCoeff),
             test3.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: cardHeightCoeff),
-            
+
             favoritesTitleStackView.topAnchor.constraint(equalTo: quickSearchScrollView.bottomAnchor, constant: screenSize.height * 0.02),
             favoritesTitleStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            
-            label.topAnchor.constraint(equalTo: favoritesTitleStackView.bottomAnchor, constant: screenSize.height * 0.05),
-            label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            label.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
-            button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 16),
-            button.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
-            button.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
-            button.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -16),
             
             headerView.topAnchor.constraint(equalTo: view.topAnchor),
             headerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -348,15 +368,46 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             mainSearchButtonView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: cardButtonHeightCoeff),
             mainSearchButtonView.rightAnchor.constraint(equalTo: mainCardView.rightAnchor, constant: 10)
         ])
+        
+        if favoriteButtons.count != 0 {
+            for x in favoriteButtons.indices {
+                if x == 0 {
+                    favoriteButtons[x].topAnchor.constraint(equalTo: favoritesTitleStackView.bottomAnchor, constant: screenSize.height * 0.05).isActive = true
+                } else {
+                    favoriteButtons[x].topAnchor.constraint(equalTo: favoriteButtons[x - 1].bottomAnchor, constant: screenSize.height * 0.02).isActive = true
+                }
+
+                if x == favoriteButtons.count - 1 {
+                    favoriteButtons[x].bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -screenSize.height*0.1).isActive = true
+                }
+
+                NSLayoutConstraint.activate([
+                    favoriteButtons[x].leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
+                    favoriteButtons[x].trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16)
+                ])
+            }
+        } else {
+            NSLayoutConstraint.activate([
+                label.topAnchor.constraint(equalTo: favoritesTitleStackView.bottomAnchor, constant: screenSize.height * 0.05),
+                label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+                label.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+                label.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+                label.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -screenSize.height*0.1)
+            ])
+        }
+        
+//        mainSearchButtonView.addTarget(self, action: #selector(goToShowRouteViewController), for: .touchUpInside)
+        mainSearchButtonView.addTarget(self, action: #selector(goToSearchCabinetViewController), for: .touchUpInside)
+        
     }
     
     private func setTimer(with interval: Double) {
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] (_) in
-            if (self?.scrollView.contentOffset.y)! > 0 && self?.headerView.layer.opacity == 0 {
+            if (self?.scrollView.contentOffset.y)! > (self?.titleTopOffset)! / 2 && self?.headerView.layer.opacity == 0 {
                 UIView.transition(with: (self?.headerView)!, duration: 0.15, options: .transitionCrossDissolve, animations: {
                     self?.headerView.layer.opacity = 1
                 })
-            } else if (self?.scrollView.contentOffset.y)! <= 0 && self?.headerView.layer.opacity == 1 {
+            } else if (self?.scrollView.contentOffset.y)! <= (self?.titleTopOffset)! / 2 && self?.headerView.layer.opacity == 1 {
                 UIView.transition(with: (self?.headerView)!, duration: 0.2, options: .transitionCrossDissolve, animations: {
                     self?.headerView.layer.opacity = 0
                 })
@@ -373,6 +424,28 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         }
         
         RunLoop.main.add(timer!, forMode: RunLoop.Mode.common)
+    }
+    
+    @objc private func buttonTapped(_ sender: buttonWithParameters) { // Функция нажатия кнопки
+    print(sender.name ?? "Error")
+}
+    
+    @objc private func goToShowRouteViewController() {
+//        let rootVC = ShowRouteViewController()
+//        let navVC = UINavigationController(rootViewController: rootVC)
+//        navVC.modalPresentationStyle = .fullScreen
+//        navVC.overrideUserInterfaceStyle = .light
+//        present(navVC, animated: true)
+        navigationController?.pushViewController(ShowRouteViewController(), animated: true)
+//        navigationController?.isNavigationBarHidden = false
+    }
+    
+    @objc private func goToSearchCabinetViewController() {
+        let rootVC = SearchingCabinetViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.overrideUserInterfaceStyle = .light
+        present(navVC, animated: true)
+//        navigationController?.pushViewController(SearchingCabinetViewController(), animated: true)
     }
 }
 
